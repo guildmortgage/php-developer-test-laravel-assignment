@@ -6,9 +6,9 @@ use App\Models\Borrower;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankAccount>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Job>
  */
-class BankAccountFactory extends Factory
+class JobFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class BankAccountFactory extends Factory
     public function definition()
     {
         return [
-            'account_number' => fake()->bankAccountNumber(),
-            'balance'        => fake()->numberBetween(500, 100000)
+            'title' => fake()->title(),
+            'description' => fake()->sentence()
         ];
     }
 }

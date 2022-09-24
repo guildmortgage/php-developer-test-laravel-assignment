@@ -12,6 +12,11 @@ class Borrower extends Model
 
     protected $fillable = ['name', 'email'];
 
+    public function job()
+    {
+        return $this->hasOne(Job::class);
+    }
+
     public function bankAccounts()
     {
         return $this->hasMany(BankAccount::class);
