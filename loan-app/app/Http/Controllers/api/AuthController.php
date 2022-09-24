@@ -7,19 +7,20 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:55',
+            'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ]);
 
         if($validator->fails()){
-            return response(['error' => $validator->errors()]);
+            return response(['error' => $validator->errors(), 'status' => Response::HTTP_UNPROCESSABLE_ENTITY]);
         }
 
         $user = User::create([
@@ -43,7 +44,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response(['error' => $validator->errors()]);
+            return response(['error' => $validator->errors(), 'status' => Response::HTTP_UNPROCESSABLE_ENTITY]);
         }
 
         if (!auth()->attempt($data)) {
