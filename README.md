@@ -130,7 +130,7 @@ Get All Borrowers
 > Authorization: Bearer XXXXX
 ``` 
 
-Payload Example:
+Response Example:
 ```json
 {
 	"data": [
