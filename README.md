@@ -74,6 +74,28 @@ Run Test Suite
 php artisan artisan:test
 ``` 
 
+Output example:
+```bash
+ PASS  Tests\Feature\AnnualReportTest
+  ✓ it reports the total annual incomes by year
+
+   PASS  Tests\Feature\BorrowerTest
+  ✓ it creates a borrower
+  ✓ it updates a borrower
+  ✓ it finds a borrower
+  ✓ it finds all borrowers
+  ✓ it deletes a borrower
+
+   PASS  Tests\Feature\LoginTest
+  ✓ it requires email and login
+  ✓ it requires valid email and password login
+  ✓ user register successfully
+  ✓ user logins successfully
+
+  Tests:  10 passed
+  Time:   0.50s
+```
+
 ### Step 4 - Use User Register API
 
 Register User and get "access_token" to use API
