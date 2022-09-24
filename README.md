@@ -36,5 +36,194 @@
 - Usage of design patterns in your code
 
 ## Installation instructions
+### Prerequisites
 
-(add your instructions here)
+* To run this project, you must have PHP 8 installed.
+* You should setup a host on your web server for your local domain. 
+
+### Step 1
+
+> To run this project, you must have PHP 8 installed as a prerequisite.
+
+Begin by cloning this repository to your machine, and installing all Composer dependencies.
+
+```bash
+git clone https://github.com/ladislaoRS/php-developer-test-laravel-assignment.git
+
+> cd loan-app && composer install
+
+> php artisan passport:install
+
+> php artisan migrate
+
+> php artisan db:seed
+
+``` 
+
+### Step 2
+
+Serving Laravel
+```bash
+php artisan artisan:serve
+``` 
+
+### Step 3
+
+Run Test Suite
+```bash
+php artisan artisan:test
+``` 
+
+Output example:
+```bash
+ PASS  Tests\Feature\AnnualReportTest
+  ✓ it reports the total annual incomes by year
+
+   PASS  Tests\Feature\BorrowerTest
+  ✓ it creates a borrower
+  ✓ it updates a borrower
+  ✓ it finds a borrower
+  ✓ it finds all borrowers
+  ✓ it deletes a borrower
+
+   PASS  Tests\Feature\LoginTest
+  ✓ it requires email and login
+  ✓ it requires valid email and password login
+  ✓ user register successfully
+  ✓ user logins successfully
+
+  Tests:  10 passed
+  Time:   0.50s
+```
+
+### Step 4 - Use User Register API
+
+Register User and get "access_token" to use API
+```bash
+> POST /api/register HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Payload Example:
+```json
+{
+  "name": "Ladislao",
+  "email": "ladislao@email.com",
+  "password": "s3cretpwd"
+}
+``` 
+
+### Step 5 - Use Borrower API
+
+Create Borrower
+
+```bash
+> POST /api/borrower HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Payload Example:
+```json
+{
+  "name": "Ladislao",
+  "email": "ladislao@email.com",
+}
+```
+
+Get All Borrowers
+
+```bash
+> GET /api/borrower HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Response Example:
+```json
+{
+	"data": [
+		{
+			"id": 1,
+			"name": "Camilla Lemke",
+			"email": "grant.loyal@example.com",
+			"job": {
+				"title": "Prof.",
+				"description": "Quibusdam rerum facilis rem veniam."
+			},
+			"bankAccount": [],
+			"created_at": "2022-09-24T16:14:02.000000Z",
+			"updated_at": "2022-09-24T16:14:02.000000Z"
+		},
+		{
+			"id": 2,
+			"name": "Chauncey Wilkinson",
+			"email": "collin.waelchi@example.org",
+			"job": {
+				"title": "Dr.",
+				"description": "Omnis culpa optio aliquam aut aut."
+			},
+			"bankAccount": [
+				{
+					"account_number": "05296301",
+					"type": "Checking",
+					"status": "Active",
+					"balance": "$8037"
+				},
+				{
+					"account_number": "75599409180",
+					"type": "Checking",
+					"status": "Active",
+					"balance": "$79153"
+				}
+			],
+			"created_at": "2022-09-24T16:14:02.000000Z",
+			"updated_at": "2022-09-24T16:14:02.000000Z"
+		}
+	]
+}
+```
+
+### Step 6 - Use Total Annual Report API
+
+GET Total Annual Income By Year
+
+```bash
+> GET /api/total-annual-income HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Response Example:
+```json
+{
+  "data": {
+    "2022": {
+      "total_annual_income": 122549
+		},
+    "2021": {
+      "total_annual_income": 35234
+		}
+	}
+}
+```
+
+
+
