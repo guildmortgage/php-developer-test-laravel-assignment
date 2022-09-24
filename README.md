@@ -118,6 +118,63 @@ Payload Example:
 }
 ```
 
+Get All Borrowers
+
+```bash
+> GET /api/borrower HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Payload Example:
+```json
+{
+	"data": [
+		{
+			"id": 1,
+			"name": "Camilla Lemke",
+			"email": "grant.loyal@example.com",
+			"job": {
+				"title": "Prof.",
+				"description": "Quibusdam rerum facilis rem veniam."
+			},
+			"bankAccount": [],
+			"created_at": "2022-09-24T16:14:02.000000Z",
+			"updated_at": "2022-09-24T16:14:02.000000Z"
+		},
+		{
+			"id": 2,
+			"name": "Chauncey Wilkinson",
+			"email": "collin.waelchi@example.org",
+			"job": {
+				"title": "Dr.",
+				"description": "Omnis culpa optio aliquam aut aut."
+			},
+			"bankAccount": [
+				{
+					"account_number": "05296301",
+					"type": "Checking",
+					"status": "Active",
+					"balance": "$8037"
+				},
+				{
+					"account_number": "75599409180",
+					"type": "Checking",
+					"status": "Active",
+					"balance": "$79153"
+				}
+			],
+			"created_at": "2022-09-24T16:14:02.000000Z",
+			"updated_at": "2022-09-24T16:14:02.000000Z"
+		}
+	]
+}
+```
+
 ### Step 6 - Use Total Annual Report API
 
 GET Total Annual Income By Year
