@@ -43,21 +43,108 @@
 
 ### Step 1
 
-> To run this project, you must have PHP 7 installed as a prerequisite.
+> To run this project, you must have PHP 8 installed as a prerequisite.
 
-Begin by cloning this repository to your machine, and installing all Composer & NPM dependencies.
+Begin by cloning this repository to your machine, and installing all Composer dependencies.
 
 ```bash
-git clone git@github.com:aceraven777/laracasts-forum-laravel-tdd.git
-cd council && composer install && npm install
-php artisan council:install
-npm run dev
-```
+git clone https://github.com/ladislaoRS/php-developer-test-laravel-assignment.git
+
+> cd loan-app && composer install
+
+> php artisan passport:install
+
+> php artisan migrate
+
+> php artisan db:seed
+
+``` 
 
 ### Step 2
 
-Until an administration portal is available, manually insert any number of "channels" (think of these as forum categories) into the "channels" table in your database.
+Serving Laravel
+```bash
+php artisan artisan:serve
+``` 
 
-1. Visit: http://council.test/register and register an account.
-1. Edit `config/council.php`, adding the email address of the account you just created.
-1. Visit: http://council.test/admin/channels and add at least one channel.
+### Step 3
+
+Run Test Suite
+```bash
+php artisan artisan:test
+``` 
+
+### Step 4 - Use User Register API
+
+Register User and get "access_token" to use API
+```bash
+> POST /api/register HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Payload Example:
+```json
+{
+  "name": "Ladislao",
+  "email": "ladislao@email.com",
+  "password": "s3cretpwd"
+}
+``` 
+
+### Step 5 - Use Borrower API
+
+Create Borrower
+
+```bash
+> POST /api/borrower HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Payload Example:
+```json
+{
+  "name": "Ladislao",
+  "email": "ladislao@email.com",
+}
+```
+
+### Step 6 - Use Total Annual Report API
+
+GET Total Annual Income By Year
+
+```bash
+> GET /api/total-annual-income HTTP/1.1
+> Host: localhost:8000
+> User-Agent: insomnia/2021.7.2
+> Content-Type: application/json
+> Accept: application/json
+> Content-Length: 81
+> Authorization: Bearer XXXXX
+``` 
+
+Response Example:
+```json
+{
+  "data": {
+    "2022": {
+      "total_annual_income": 122549
+		},
+    "2021": {
+      "total_annual_income": 35234
+		}
+	}
+}
+```
+
+
+
