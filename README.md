@@ -36,5 +36,40 @@
 - Usage of design patterns in your code
 
 ## Installation instructions
+### Prerequisites
 
-(add your instructions here)
+* To run this project, you must have PHP 8 installed.
+* You should setup a host on your web server for your local domain. 
+
+### Step 1
+
+> To run this project, you must have PHP 8 installed as a prerequisite.
+
+Begin by cloning this repository to your machine, and installing all Composer dependencies.
+
+```bash
+git clone git@github.com:matiasvillanueva/php-developer-test-laravel-assignment.git
+
+> cd php-developer-test-laravel-assignment && composer install
+
+> php artisan passport:install
+
+> php artisan migrate
+
+> php artisan db:seed
+
+``` 
+
+### Step 2
+
+Serving Laravel
+```bash
+php artisan artisan:serve
+``` 
+
+### Step 3
+
+Run Test Suite
+```bash
+php artisan artisan:test
+```
