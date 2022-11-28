@@ -11,7 +11,7 @@
 
 ## Requirements
 
-- Clone this git repository and create a feature branch for your changes
+- Fork this git repository and create a feature branch for your changes
 - Install a fresh copy of Laravel
 - Create some simple database tables to represent the above scenario
   - By simple I mean just the basics of what's really needed for this exercise
@@ -23,7 +23,7 @@
 - Write a unit test on at least one method in the project
   - I'm deliberatly keeping this requirement vague to give you freedom to decide what to test and how
 - Update this README file with any installation instructions needed so we can clone and run your code
-- Commit your feature branch back to this repository
+- Create a Github Pull Request against this repo with your changes
 
 ## What we're looking for
 
