@@ -37,4 +37,7 @@
 
 ## Installation instructions
 
-(add your instructions here)
+To create the data tables and seed values
+Run: php artisan migrate:fresh --seed
+
+The API endpoint is {site}/api/borrowers/
