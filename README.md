@@ -114,6 +114,32 @@ for example `http://localhost:8000/api/loan-applications/1/totals`
 
 - `GET /api/loan-applications/{id}/bank-account-value`: Retrieves the total bank account value for a specific loan application ID.
 
+- `POST /api/loan-applications/add`: Add a new loan application
+
+### Run curl to test the post request to add a loan application
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+"loan": {
+"loan_amount": 10000
+},
+"borrowers": [
+{
+"first_name": "Jason",
+"last_name": "Williams",
+"annual_salary": 50000,
+"total_bank_balance": 10000
+},
+{
+"first_name": "Donna",
+"last_name": "Smith",
+"annual_salary": 60000,
+"total_bank_balance": 15000
+}
+]
+}' http://localhost:8000/api/loan-applications/add
+```
+
 ### Running Tests
 
 To execute the tests for the project, run the following command:

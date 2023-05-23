@@ -53,4 +53,63 @@ class LoanApplicationControllerTest extends TestCase
 			'total_bank_account_value' => 100000 // Replace with the expected total bank account value
 		]);
 	}
+
+
+	public function testAddLoanApplicationWithBorrowers()
+	{
+		// Prepare the request payload
+		$requestData = [
+			'loan' => [
+				'loan_amount' => 10000
+			],
+			'borrowers' => [
+				[
+					'first_name' => 'Jason',
+					'last_name' => 'Jones',
+					'middle_name' => null,
+					'annual_salary' => 50000,
+					'total_bank_balance' => 10000
+				],
+				[
+					'first_name' => 'Jane',
+					'last_name' => 'Jones',
+					'middle_name' => null,
+					'annual_salary' => 50000,
+					'total_bank_balance' => null
+				]
+			]
+		];
+
+		// Send a POST request to the API route
+		$response = $this->post('/api/loan-applications/add', $requestData);
+
+		// Assert the response status code
+		$response->assertStatus(200);
+
+		// Assert the response JSON structure
+		$response->assertJson([
+			'message' => 'Loan application created with borrowers'
+		]);
+
+		// Assert the database records
+		$this->assertDatabaseHas('loan_applications', [
+			'loan_amount' => 10000
+		]);
+
+		$this->assertDatabaseHas('borrowers', [
+			'first_name' => 'Jason',
+			'last_name' => 'Jones',
+			'middle_name' => null,
+			'annual_salary' => 50000,
+			'total_bank_balance' => 10000
+		]);
+
+		$this->assertDatabaseHas('borrowers', [
+			'first_name' => 'Jane',
+			'last_name' => 'Jones',
+			'middle_name' => null,
+			'annual_salary' => 50000,
+			'total_bank_balance' => null
+		]);
+	}
 }
