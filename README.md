@@ -45,17 +45,9 @@ Before getting started with the project, make sure you have the following softwa
 - Composer
 - MySQL
 
-1. Clone the repository:
+1. Clone the repository
 
-```shell
-git clone https://github.com/.git
-```
-
-2. Navigate to the project directory:
-
-```shell
-cd laravel-project
-```
+2. Navigate to the project directory
 
 3. Install the dependencies using Composer:
 
