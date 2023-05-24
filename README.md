@@ -37,4 +37,115 @@
 
 ## Installation instructions
 
-(add your instructions here)
+## Prerequisites
+
+Before getting started with the project, make sure you have the following software installed:
+
+- PHP (7.4 or later)
+- Composer
+- MySQL
+
+1. Clone the repository
+
+2. Navigate to the project directory
+
+3. Install the dependencies using Composer:
+
+```shell
+composer install
+```
+
+4. Create a copy of the `.env.example` file and rename it to `.env`.
+
+```shell
+cp .env.example .env
+```
+
+5. Generate application key
+
+```shell
+php artisan key:generate
+```
+
+6. Intall mysql if not already installed
+
+```shell
+  brew install mysql
+```
+
+7. Start the sever
+
+```shell
+  brew services start mysql
+```
+
+8. Configure the database connection in the `.env` file with your database credentials.
+
+9. Run the database migrations:
+
+```shell
+php artisan migrate
+```
+
+10. (Optional) Seed the database with sample data:
+
+```shell
+php artisan db:seed
+```
+
+## Usage
+
+To run the Laravel development server, execute the following command:
+
+```shell
+php artisan serve
+```
+
+The server will start running at `http://localhost:8000`.
+
+### API Endpoints
+
+The following API endpoints are available: You can run them in the browser.  
+for example `http://localhost:8000/api/loan-applications/1/totals`
+
+- `GET /api/loan-applications/{id}/totals`: Retrieves the total annual income and total bank account value for a specific loan application ID.
+
+- `GET /api/loan-applications/{id}/annual-income`: Retrieves the total annual income for a specific loan application ID.
+
+- `GET /api/loan-applications/{id}/bank-account-value`: Retrieves the total bank account value for a specific loan application ID.
+
+- `POST /api/loan-applications/add`: Add a new loan application
+
+### Run curl to test the post request to add a loan application
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+"loan": {
+"loan_amount": 10000
+},
+"borrowers": [
+{
+"first_name": "Jason",
+"last_name": "Williams",
+"annual_salary": 50000,
+"total_bank_balance": 10000
+},
+{
+"first_name": "Donna",
+"last_name": "Smith",
+"annual_salary": 60000,
+"total_bank_balance": 15000
+}
+]
+}' http://localhost:8000/api/loan-applications/add
+```
+
+### Running Tests
+
+To execute the tests for the project, run the following command:
+
+```shell
+php artisan test
+```
+
+The tests will run and display the results in your console.
