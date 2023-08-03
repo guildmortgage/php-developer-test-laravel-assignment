@@ -39,10 +39,10 @@
 
 1. Clone or download the repository
 2. Go to the project directory and run `composer install`
-3. Create `.env` file by copying the `.env.example.` You may use the command to do that `cp .env.example .env`
+3. Create `.env` file by copying the `.env.example.` You may use the command to do that `cp .env.example .env` on UNIX-based systems
 4. `php artisan key:generate`
 5. Update the credentials and other necessary details in `.env` file
-6. Make sure you set the right file and folder permissions
+6. Make sure you set the right file and folder permissions (https://stackoverflow.com/questions/66108759/set-laravel-storage-permission-to-777)
 7. Run the command `php artisan migrate --seed`
 
 ## Endpoints
